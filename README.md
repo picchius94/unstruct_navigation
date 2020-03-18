@@ -39,6 +39,6 @@ cost_map.analysis(Z = terrain.Z)
 ```
 Where `residual_ratio` is a parameter which controls the robot capabilities to withsand rough terrain, and `non_traversable_threshold` is the traversability threshold for considering a point as traversable, while the other parameters are self-explanatory. The final cost map can be accessed by calling `cost_map.tot`.
 
-It is also important to highlight that a portion of the borders'map (proportional to the robot dimensions) are excluded from the traversability analysis (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres.
+It is also important to highlight that not all the map is considered for traversability analysis, as the borders are excluded (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres (the size of the excluded portion is dependent on the robot dimension).
 
  
