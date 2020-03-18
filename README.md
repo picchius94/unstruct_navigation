@@ -43,7 +43,7 @@ It is also important to highlight that not the whole the map is considered for t
 
 
 ## 3. A* Path Planning
-A* is a classical graph search method to perform weighted path planning. However, the standard algorithm plans actions in a grid-space (actions correspond to moves among adjacent cells). Conversely, here A* is implemented in a lattice space, where the actions correspond to arcs, straight lines or rotations definable by the user (a detailed definition of creating new actions is given in `main.py`).
+A* is a classical graph search method to perform weighted path planning. However, the standard algorithm plans actions in a grid-space. Conversely, here A* is implemented in a lattice space, where the actions correspond to arcs, straight lines or rotations definable by the user and according to the specific robot mobility capabilities (a detailed definition of creating new actions is given in `main.py`).
 
 ```python
 import A_star_lattice as astar
