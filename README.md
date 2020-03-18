@@ -22,7 +22,10 @@ terrain.sample_generator(plot=True)
 ```
 
 The map matrix can be accessed by calling  `terrain.Z`. Upon initialization, it is also possible to change each filter parameter individually (for example: `terrain.perc_obstacles = 0.12`). The full list of parameters can be found in the class definition.
-![an example](Images_example/Figure_2.png) <!-- .element height="20%" width="20%" -->
+<p align="center">
+<img src="Images_example/Figure_2.png" width="400">
+</p>
+
 
 
 ## 2. Traversability Analysis
