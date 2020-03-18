@@ -22,15 +22,11 @@ terrain.sample_generator(plot=True)
 ```
 
 The map matrix can be accessed by calling  `terrain.Z`. Upon initialization, it is also possible to change each filter parameter individually (for example: `terrain.perc_obstacles = 0.12`). The full list of parameters can be found in the class definition.
-![an example](Images_example/Figure_2.png)
+![an example](Images_example/Figure_2.png) <!-- .element height="20%" width="20%" -->
 
 
 ## 2. Traversability Analysis
 A geometric traversability analysis is performed with a similar method to what NASA developed for the [Martian Exploration Rovers](https://ieeexplore.ieee.org/document/1035370). It assigns to the map points a traversability value from 0 (super safe) to 255 (super unsafe). The traversability analysis is composed of an **obstacle**, **slope** and **roughness** test. Then, the three tests are averaged to compute the final traversability cost.
-![**obstacle**](Images_example/Figure_3.png)
-![**slope**](Images_example/Figure_4.png)
-![**roughness**](Images_example/Figure_5.png)
-![final traversability cost](Images_example/Figure_6.png)
 
 This is done by instantiate a `traversability_test.Traversability_Map` object with map and robot parameters as in the following:
 ```python
@@ -45,6 +41,10 @@ Where `residual_ratio` is a parameter which controls the robot capabilities to w
 
 It is also important to highlight that not the whole the map is considered for traversability analysis, as the borders are excluded (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres (the size of the excluded portion is dependent on the robot dimension).
 
+![**obstacle**](Images_example/Figure_3.png)
+![**slope**](Images_example/Figure_4.png)
+![**roughness**](Images_example/Figure_5.png)
+![final traversability cost](Images_example/Figure_6.png)
 
 ## 3. A* Path Planning
 A* is a classical graph search method to perform weighted path planning. However, the standard algorithm plans actions in a grid-space. Conversely, here A* is implemented in a lattice space, where the actions correspond to arcs, straight lines or rotations definable by the user and according to the specific robot mobility capabilities (a detailed definition of creating new actions is given in `main.py`).
