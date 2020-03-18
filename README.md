@@ -26,7 +26,7 @@ The map matrix can be accessed by calling  `terrain.Z`.
 Upon initialization, it is also possible to change each filter parameter individually (for example: `terrain.perc_obstacles = 0.12`). The full list of parameters can be found in the class definition.
 
 ## 2. Traversability Analysis
-A geometric traversability analysis is performed with a similar method to what NASA developed for the [Martian Exploration Rovers](https://ieeexplore.ieee.org/document/1035370). It assigns to the map points a traversability value from 0 (super safe) to 255 (super unsafe).
+A geometric traversability analysis is performed with a similar method to what NASA developed for the [Martian Exploration Rovers](https://ieeexplore.ieee.org/document/1035370). It assigns to the map points a traversability value from 0 (super safe) to 255 (super unsafe). The traversability analysis is composed of an [**obstacle**](Images_example/Figure_3.png), [**slope**](Images_example/Figure_4.png), and [**roughness**](Images_example/Figure_5.png) test. Then, the three tests are averaged to compute the [final traversability cost](Images_example/Figure_6.png).
 
 This is done by instantiate a `traversability_test.Traversability_Map` object with map and robot parameters as in the following:
 ```python
@@ -37,6 +37,8 @@ cost_map = tt.Traversability_Map(map_size, discr, plot = plot, width = width,
                                      non_traversable_threshold = non_traversable_threshold)
 cost_map.analysis(Z = terrain.Z)
 ```
-`residual_ratio` is a parameter which controls the robot capabilities to withsand rough terrain, and `non_traversable_threshold` is the traversability threshold for considering a point as traversable. The other parameters are self-explanatory.
+Where `residual_ratio` is a parameter which controls the robot capabilities to withsand rough terrain, and `non_traversable_threshold` is the traversability threshold for considering a point as traversable, while the other parameters are self-explanatory. The final cost map can be accessed by calling `cost_map.tot`.
 
-The traversability analysis is composed of an [**obstacle**](Images_example/Figure_3.png), [**slope**](Images_example/Figure_4.png), and [**roughness**](Images_example/Figure_5.png) test. Then, the three tests are averaged to compute the [final traversability cost](Images_example/Figure_6.png).
+It is also important to highlight that a portion of the borders'map (proportional to the robot dimensions) are excluded from the traversability analysis (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres.
+
+ 
