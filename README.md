@@ -29,7 +29,7 @@ The map matrix can be accessed by calling  `terrain.Z`. Upon initialization, it 
 
 
 ## 2. Traversability Analysis
-A geometric traversability analysis is performed with a similar method to what NASA developed for the [Martian Exploration Rovers](https://ieeexplore.ieee.org/document/1035370). It assigns to the map points a traversability value from 0 (super safe) to 255 (super unsafe). The traversability analysis is composed of an **obstacle**, **slope** and **roughness** test. Then, the three tests are averaged to compute the final traversability cost.
+A geometric traversability analysis is performed with a similar method to what NASA developed for the [Martian Exploration Rovers](https://ieeexplore.ieee.org/document/1035370). It assigns to the map points a traversability value from 0 (super safe) to 1 (super unsafe). The traversability analysis is composed of an **obstacle**, **slope** and **roughness** test. Then, the three tests are averaged to compute the final traversability cost.
 
 This is done by instantiate a `traversability_test.Traversability_Map` object with map and robot parameters as in the following:
 ```python
