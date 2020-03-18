@@ -1,4 +1,4 @@
-import generate_opensimplex_terrain as got
+import terrain_generator as tg
 import traversability_test as tt
 import A_star_lattice as astar
 import plot_path as pp
@@ -68,7 +68,7 @@ def main():
     #########################################
     ##### Generate OpenSimplex Map ##########
     #########################################
-    terrain = got.OpenSimplex_Map(map_size, discr, terrain_type=terrain_type, plot = plot)
+    terrain = tg.OpenSimplex_Map(map_size, discr, terrain_type=terrain_type, plot = plot)
     terrain.sample_generator()
     #########################################
     #### Compute Traversability Analysis ####
