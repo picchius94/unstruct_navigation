@@ -10,7 +10,7 @@ The [Opensimplex Python API](https://github:com/lmas/opensimplex) is used along 
 This is done by instantiate a `terrain_generator.OpenSimplex_Map` object with the following parameters:
 - __*map_size*__: size in metres of the squared-map from *-map_size/2* to *map_size/2*
 - __*discr*__: discretization in metres of each map cell
-- __*terrain_type*__: 5 options are defined (`mountain_crater`, `smooth`, `rough`, `wavy`, `scattered_sharp`), which differently set the parameters of the filters (once the object has been instantiated it is also possible to change each parameter individually)
+- __*terrain_type*__: 5 options are defined (`mountain_crater`, `smooth`, `rough`, `wavy`, `scattered_sharp`), which differently set the parameters of the filters
 
 Then, calling the `sample_generator` method a new sample is generated.
 
@@ -21,3 +21,10 @@ terrain.sample_generator(plot=True)
 ```
 
 The map matrix can be accessed by calling  `terrain.Z`.
+
+Upon initialization, it is also possible to change each filter parameter individually, for example:
+
+```python
+terrain.perc_obstacles = 0.6
+```
+The full list of parameters can be seen in the class definition.
