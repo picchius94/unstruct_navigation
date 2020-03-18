@@ -22,7 +22,7 @@ terrain.sample_generator(plot=True)
 ```
 
 The map matrix can be accessed by calling  `terrain.Z`. Here, an example
-[an example](Images_example/Figure_2.png)
+![an example](Images_example/Figure_2.png)
 
 Upon initialization, it is also possible to change each filter parameter individually (for example: `terrain.perc_obstacles = 0.12`). The full list of parameters can be found in the class definition.
 
