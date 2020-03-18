@@ -55,4 +55,4 @@ path = astar.A_star_Graph(cost_map.map_size_tr, cost_map.map_size_tr, discr,
                               all_actions = all_actions, forward_actions = forward_actions)
 path.search()
 ```
- 
+First, a `A_star_lattice.A_star_Graph` object is defined with cost map parameters, starting and goal positions, actions definition, and action cost weights. Then, `path.search()` run the A* algorithm. Finally, the optimal trajectory coordinates, actions and costs computed by A* can be accessed by calling `path.states`, `path.actions`, and `path.costs` respectively. Here, an example of planned trajectory in the [cost map](Images_example/Figure_7.png), and [elevation map](Images_example/Figure_8.png).
