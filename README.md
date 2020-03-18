@@ -25,6 +25,7 @@ The map matrix can be accessed by calling  `terrain.Z`.
 Upon initialization, it is also possible to change each filter parameter individually, for example:
 
 ```python
-terrain.perc_obstacles = 0.6
+terrain.perc_obstacles = 0.12
+terrain.max_slope_variation = 0.5
 ```
 The full list of parameters can be seen in the class definition.
