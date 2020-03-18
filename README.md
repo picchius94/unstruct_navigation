@@ -5,9 +5,9 @@ This repo contains three main utilities:
 - A* on a lattice space path planning algorithm
 
 ## 1. Natural terrain generation with OpenSimplex
-In `terrain_generator.py` the [Opensimplex Python API](https://github:com/lmas/opensimplex) is used along with some filtering techniques to render realistic terrains.
+The [Opensimplex Python API](https://github:com/lmas/opensimplex) is used along with some filtering techniques to render realistic terrains.
 
-First, an `OpenSimplex_Map` object has to be initialised with:
+This is done by instantiate a `terrain_generator.OpenSimplex_Map` object with the following parameters:
 - *map_size*: size in metres of the squared-map from *-map_size/2* to *map_size/2*
 - *discr*: discretization in metres of each map cell
-- *terrain_type*: 5 options (`mountain_crater`, `smooth`, `rough`, `wavy`, `scattered_sharp`)
+- *terrain_type*: 5 options are defined (`mountain_crater`, `smooth`, `rough`, `wavy`, `scattered_sharp`), which differently set the parameters of the filters (once the object has been instantiated it is also possible to change each parameter individually) 
