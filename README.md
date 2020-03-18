@@ -12,7 +12,7 @@ This is done by instantiate a `terrain_generator.OpenSimplex_Map` object with th
 - __*discr*__: discretization in metres of each map cell
 - __*terrain_type*__: 5 options are defined (`mountain_crater`, `smooth`, `rough`, `wavy`, `scattered_sharp`), which differently set the parameters of the filters
 
-Then, calling the `sample_generator` method a new sample is generated.
+Then, calling the `sample_generator` method a new sample is generated. Here, [an example](Images_example/Figure_2):
 
 ```python
 import terrain_generator as tg
@@ -28,4 +28,4 @@ Upon initialization, it is also possible to change each filter parameter individ
 terrain.perc_obstacles = 0.12
 terrain.max_slope_variation = 0.5
 ```
-The full list of parameters can be seen in the class definition.
+The full list of parameters can be found in the class definition.
