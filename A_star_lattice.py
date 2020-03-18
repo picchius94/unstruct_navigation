@@ -233,7 +233,7 @@ class A_star_Graph:
         num_points_y = int(self.limit_y*2/self.discr + 1)
         x_tr = np.linspace(-self.limit_x,self.limit_x,num_points_x)
         y_tr = np.linspace(-self.limit_y,self.limit_y,num_points_y)
-        Z= self.cost/255.0
+        Z= self.cost
         X, Y = np.meshgrid(x_tr,y_tr)
         
         fig = plt.figure(figsize=(15,15))

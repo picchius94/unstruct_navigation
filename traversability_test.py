@@ -131,7 +131,7 @@ class Traversability_Map(object):
         else:
             print("Traversability Plot Option not valid")
             return -1
-        Z = Z/255.0
+        Z = Z
         X, Y = np.meshgrid(self.x_tr,self.y_tr)
         fig = plt.figure(figsize=(15,15))
         ax = plt.gca()
@@ -145,58 +145,3 @@ class Traversability_Map(object):
         cb.ax.tick_params(labelsize=40)
         cb.set_label("Cost", fontsize=35, rotation = 90, va= "bottom", labelpad = 32)
         plt.show()                 
-    def plot_3D(self, feature):
-        if feature == 'obstacles':
-            Z = self.obstacles
-        elif feature == 'slopes':
-            Z = self.slopes
-        elif feature == 'roughness':
-            Z = self.roughness
-        elif feature == 'tot':
-            Z = self.tot
-        else:
-            print("Traversability Plot Option not valid")
-            return -1
-        Z = Z/255.0
-         
-        # Plot of Feature Traversability Map        
-        X_tr, Y_tr = np.meshgrid(self.x_tr,self.y_tr)
-        plt.figure(figsize=(15,15))
-        ax = plt.axes(projection='3d')
-        ax.plot_surface(X_tr,Y_tr,Z)
-        ax.set_title("Cost {}".format(feature), fontsize = 35)
-        ax.set_xlabel('x')
-        ax.set_ylabel('y')
-        ax.set_zlabel('z');
-        # Plot of Non-plannable areas
-        x1 = self.x[self.x > self.map_size/2 - self.radius]
-        x2 = self.x[self.x < self.radius - self.map_size/2]
-        y1 = self.x[self.y > self.map_size/2 - self.radius]
-        y2 = self.x[self.y < self.radius - self.map_size/2]
-        X1,Y1 = np.meshgrid(x1,self.y)
-        X2,Y2 = np.meshgrid(x2,self.y)
-        X3,Y3 = np.meshgrid(self.x,y1)
-        X4,Y4 = np.meshgrid(self.x,y2)
-        ax.plot_surface(X1,Y1,np.zeros((self.DEM_size,x1.shape[0])), color='g')
-        ax.plot_surface(X2,Y2,np.zeros((self.DEM_size,x2.shape[0])), color='g')
-        ax.plot_surface(X3,Y3,np.zeros((y1.shape[0],self.DEM_size)), color='g')
-        ax.plot_surface(X4,Y4,np.zeros((y2.shape[0],self.DEM_size)), color='g')
-        # Create cubic bounding box to simulate equal aspect ratio
-        max_range = np.array([self.x.max()-self.x.min(), self.y.max()-self.y.min(), Z.max()-Z.min()]).max()
-        Xb = 0.5*max_range*np.mgrid[-1:2:2,-1:2:2,-1:2:2][0].flatten() + 0.5*(self.x.max()+self.x.min())
-        Yb = 0.5*max_range*np.mgrid[-1:2:2,-1:2:2,-1:2:2][1].flatten() + 0.5*(self.y.max()+self.y.min())
-        Zb = 0.5*max_range*np.mgrid[-1:2:2,-1:2:2,-1:2:2][2].flatten() + 0.5*(Z.max()+Z.min())
-        # Comment or uncomment following both lines to test the fake bounding box:
-        for xb, yb, zb in zip(Xb, Yb, Zb):
-           ax.plot([xb], [yb], [zb], 'w')
-        #Set camera view rotation angles
-        ax.view_init(azim=-60,elev=50)
-        plt.show()
-        # print("{}".format(feature))
-        # print("")
-        # print("Max value: {}".format(Z.max()))
-        # print("")
-        # print("Min value: {}".format(Z.min()))
-        # print("")
-        # print("Mean value: {}".format(Z.mean()))
-        # print("")
