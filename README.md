@@ -44,10 +44,7 @@ Where `residual_ratio` is a parameter which controls the robot capabilities to w
 
 It is also important to highlight that not the whole the map is considered for traversability analysis, as the borders are excluded (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres (the size of the excluded portion is dependent on the robot dimension).
 
-![**obstacle**](Images_example/Figure_3.png)
-![**slope**](Images_example/Figure_4.png)
-![**roughness**](Images_example/Figure_5.png)
-![final traversability cost](Images_example/Figure_6.png)
+<img src="Images_example/Figure_3.png" width="400"> <img src="Images_example/Figure_4.png" width="400"> <img src="Images_example/Figure_5.png" width="400"> <img src="Images_example/Figure_6.png" width="400">
 
 ## 3. A* Path Planning
 A* is a classical graph search method to perform weighted path planning. However, the standard algorithm plans actions in a grid-space. Conversely, here A* is implemented in a lattice space, where the actions correspond to arcs, straight lines or rotations definable by the user and according to the specific robot mobility capabilities (a detailed definition of creating new actions is given in `main.py`).
@@ -63,5 +60,5 @@ path = astar.A_star_Graph(cost_map.map_size_tr, cost_map.map_size_tr, discr,
 path.search()
 ```
 First, a `A_star_lattice.A_star_Graph` object is defined with: cost map parameters, starting and goal positions, action definition, and action cost factors. Then, `path.search()` run the A* algorithm. Finally, the optimal trajectory coordinates, actions and costs computed by A* can be accessed by calling `path.states`, `path.actions`, and `path.costs` respectively. Here, an example of planned trajectory in the cost map, and elevation map.
-![cost map](Images_example/Figure_7.png)
-![elevation map](Images_example/Figure_8.png).
+
+<img src="Images_example/Figure_7.png" width="400"> <img src="Images_example/Figure_8.png" width="400">
