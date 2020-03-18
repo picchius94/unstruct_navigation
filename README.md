@@ -41,4 +41,18 @@ Where `residual_ratio` is a parameter which controls the robot capabilities to w
 
 It is also important to highlight that not the whole the map is considered for traversability analysis, as the borders are excluded (we don't have enough information for these areas). For example, for a map of 8x8 metres and a robot of width = 0.835m, and length = 1.198m the traversable map is 6.54x6.54 metres (the size of the excluded portion is dependent on the robot dimension).
 
+
+## 3. A* Path Planning
+A* is a classical graph search method to perform weighted path planning. However, the standard algorithm plans actions in a grid-space (actions correspond to moves among adjacent cells). Conversely, here A* is implemented in a lattice space, where the actions correspond to arcs, straight lines or rotations definable by the user (a detailed definition of creating new actions is given in `main.py`).
+
+```python
+import A_star_lattice as astar
+path = astar.A_star_Graph(cost_map.map_size_tr, cost_map.map_size_tr, discr, 
+                              cost_map.tot, goal, start, goal_radius = goal_radius, 
+                              forward_length = forward_length,
+                              rotation_cost_factor = rotation_cost_factor, 
+                              forward_cost_factor = forward_cost_factor, plot = plot,
+                              all_actions = all_actions, forward_actions = forward_actions)
+path.search()
+```
  
