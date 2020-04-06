@@ -82,7 +82,7 @@ def main():
     ############# A* algorithm ##############
     #########################################
     # Setting parameters
-    path = astar.A_star_Graph(cost_map.map_size_tr, cost_map.map_size_tr, discr, 
+    path = astar.A_star_Graph(cost_map.map_size_tr/2, cost_map.map_size_tr/2, discr, 
                               cost_map.tot, goal, start, goal_radius = goal_radius, 
                               forward_length = forward_length,
                               rotation_cost_factor = rotation_cost_factor, 
