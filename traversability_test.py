@@ -26,7 +26,7 @@ class Traversability_Map(object):
         # the rover radius to the map border)
         self.x_tr = self.x[map_size/2- abs(self.x)>=self.radius]
         self.y_tr = self.y[map_size/2- abs(self.y)>=self.radius]
-        self.map_size_tr = max(self.x_tr)
+        self.map_size_tr = max(self.x_tr)*2
         # Rover clearance from ground
         self.rover_clearance = rover_clearance
         # Max Tolerated Pitch Angle
