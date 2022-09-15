@@ -5,6 +5,8 @@ import numpy as np
 import math
 import matplotlib.patches as patches
 
+# Plot utils
+
 def plot(map_size, discr, Z, width, length, states, actions, goal, goal_radius, all_actions):
     DEM_size = int(map_size/discr +1)
     x = np.linspace(-map_size/2,map_size/2,num=DEM_size)
